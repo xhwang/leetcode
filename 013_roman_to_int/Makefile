@@ -8,7 +8,7 @@ endif
 
 CXXFLAGS=-g -Wall -std=c++11
 
-NAME=3sum
+NAME=roman_to_int
 
 all: $(NAME).o
 	$(CXX) -o demo $(NAME).o

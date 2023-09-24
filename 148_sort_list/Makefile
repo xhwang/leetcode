@@ -8,7 +8,7 @@ endif
 
 CXXFLAGS=-g -Wall -std=c++11
 
-NAME=3sum
+NAME=sort_list
 
 all: $(NAME).o
 	$(CXX) -o demo $(NAME).o

@@ -1,5 +1,11 @@
+UNAME := $(shell uname)
 
-CXX=g++
+ifeq ($(UNAME), Linux)
+CXX = g++
+else
+CXX = clang++
+endif
+
 CXXFLAGS=-g -Wall -std=c++11
 
 NAME=zigzag

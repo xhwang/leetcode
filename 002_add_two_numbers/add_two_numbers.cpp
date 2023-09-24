@@ -5,11 +5,9 @@ using namespace std;
 
 
 struct ListNode {
-
   int val;
   ListNode *next;
-  ListNode(int v): val(v), next(NULL) {}
-
+  ListNode(int v): val(v), next(nullptr) {}
 };
 
 
@@ -19,58 +17,54 @@ class Solution {
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 
       // make sure the start of the following loop is reasonable
-      if(l1 == NULL && l2 == NULL)
-        return NULL;
+      if(l1 == nullptr && l2 == nullptr)
+        return nullptr;
 
       ListNode* rel = new ListNode(0);
 
       int c = 0;
       int val;
       ListNode* temp = rel;
-    
-      while(1) {
 
+      while(1) {
         // add three component values
         val = c;
-        if(l1 != NULL)
-          val = l1->val + val;
-        if(l2 != NULL)
-          val = l2->val + val;
+        if (l1) {
+          val += l1->val;
+        }
+        if (l2) {
+          val += l2->val;
+        }
 
         // update c and val
-        if(val >= 10)
-          c = 1;
-        else
-          c = 0;
+        c = val / 10;
         val = val % 10;
 
         temp->val = val;
 
         // move to next
-        if(l1 != NULL)
-          l1 =  l1->next;
-        if(l2 != NULL)
+        if (l1) {
+          l1 = l1->next;
+        }
+        if (l2) {
           l2 =  l2->next;
-      
+        }
+
         // check whether create another node
-        if(l1 != NULL || l2 != NULL || c == 1) {
+        if(l1 != nullptr || l2 != nullptr || c == 1) {
           temp->next = new ListNode(0);
           temp = temp->next;
-        }
-        else
+        } else {
           break;
-
+        }
       }
-    
+
       return rel;
-    
     }
 
-
     void addListNode(ListNode* l, ListNode* n) {
-
       ListNode* p = l;
-      while(p->next != NULL) {
+      while(p->next != nullptr) {
         p = p->next;
       }
 
@@ -78,35 +72,29 @@ class Solution {
     }
 
     void printList(ListNode* l) {
-    
-      while(l->next != NULL) {
-        cout<<l->val<<"->";
+      while(l->next != nullptr) {
+        cout << l->val << "->";
         l = l->next;
       }
       cout<<l->val<<endl;
-    
     }
 
 };
 
 
 int main() {
-
   Solution demo = Solution();
 
   ListNode* l1 = new ListNode(9);
   demo.addListNode(l1, new ListNode(9));
   demo.addListNode(l1, new ListNode(9));
-
   demo.printList(l1);
-  
+
   ListNode* l2 = new ListNode(2);
   demo.addListNode(l2, new ListNode(2));
-
   demo.printList(l2);
-
 
   ListNode* rel = demo.addTwoNumbers(l1, l2);
   demo.printList(rel);
-
+  return 0;
 }
