@@ -1,0 +1,3 @@
+
+* preorder travel
+* string compare

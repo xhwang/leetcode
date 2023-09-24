@@ -29,10 +29,7 @@ public:
       return;
   
     if(0 == target) {
-
-      vector<int> t(curr);
-      rel.push_back(t);
-
+      rel.push_back(curr);
     } else if(idx < candidates.size()) {
 
       int value = candidates[idx];
